@@ -1,0 +1,170 @@
+/*---------------------------------------
+    NavBar
+-----------------------------------------*/
+.navbar-default {
+  background: #014441;
+  margin: 0 !important;
+  padding: 10px 0;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.navbar-default .navbar-brand {
+	color: #fff;
+  font-family: 'Sketch', serif;
+  font-weight: bold;
+  font-size: 28px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.navbar-default .navbar-nav li a {
+	color: #fff;
+	font-family: Sketch;
+  font-size: 34px;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  padding-right: 22px;
+  padding-left: 22px;
+}
+.navbar-default .navbar-nav li a:hover {
+	transition: none;
+  text-decoration: underline;
+  text-decoration-color: #FDE356;
+}
+
+/*---------------------------------------
+    Home section
+-----------------------------------------*/
+
+#home {
+  background-size: cover;
+	background-attachment: fixed;
+  background-position: center center;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.main-home {
+  background: url("../img/welcome.jpg") no-repeat;
+  height: 100vh;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+#home h4 {
+  color: #bfba55;
+}
+
+#home .btn {
+	border: 4px solid #FDE356;
+  border-radius: 18px;
+  color: white;
+  font-family: 'Sketch', serif;
+  font-size: 49px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 1px 30px;
+  margin-top: 42px;
+  transition: all 0.4s ease-in-out;
+}
+
+#home .btn:hover {
+  border-color: #ffffff;
+  color: #FDE356;
+}
+
+#home .overlay {
+  background: rgba(0,0,0,0.5 );
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#home h1{
+	font-size: 68px;
+  padding-bottom: 14px;
+  margin-bottom: 0px;
+	font-family: sketch;
+}
+#more{
+	font-size: 42px;
+	display: block;
+	margin-top: 25px;
+	cursor: pointer;
+}
+
+/*---------------------------------------
+    Features section
+-----------------------------------------*/
+#features{
+	width: 100%;
+  height: 56vh;
+  margin-bottom: 12px;
+  text-align: -webkit-center;
+	display: initial;
+}
+
+#features h2{
+	color: #e6cd46;
+	font-size: 40px;
+	font-family: sketch;
+	padding-bottom: 0px;
+	padding-top: 20px;
+}
+#features p:first-of-type{
+	color: #888;
+	margin-bottom: 34px;
+}
+#features .fas{
+	margin-bottom: 9px;
+	font-size: 76px;
+	color: #014441;
+}
+
+/*---------------------------------------
+    How to use section
+-----------------------------------------*/
+.howTo{
+	background: url("../img/how-to.jpg") no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+
+	color: #ffffff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
