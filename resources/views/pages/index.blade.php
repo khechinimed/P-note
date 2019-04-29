@@ -9,7 +9,7 @@
                <div class="col-md-12 col-sm-12">
                     <h1 id="fit1"><span class="typeme"></span></h1>
                     <h1 id="fit2"><span class="typeme2"></span></h1>
-                    <a href="#blog" class="btn btn-default">Créer une note</a>
+                    <a href="/create" class="btn btn-default">Créer une note</a>
                     <i id="more" class="fas fa-angle-double-down"></i>
                </div>
           </div>
@@ -45,12 +45,24 @@
         </div>
     </section>
     <section class="howTo">
-      <div class="container">
-        <h2>How to use</h2>
+      <div class="">
+        <div class="text">
+          <p>
+            Avec Pnote<br>
+            vous pouvez envoyer des notes qui s'autodestruisent après lecture .<br>
+          </p>
+          <p>
+            -Ecrivez votre notre, spécifiez un mot de passe<br>
+            -Vous obtiendrez un lien vers votre notre <br>
+            -Envoyez le lien à votre correspondant <br>
+            -La note se détruira après que le destinataire l'ai lue <br>
+          </p>
+          <p>
+            -En cliquant sur options, vous pouvez définir une <br>
+            date d'expiration, ou être notifié lorsque la note sera détruite
+          </p>
+        </div>
       </div>
     </section>
 
-<script type="text/javascript">
-
-</script>
 @endsection

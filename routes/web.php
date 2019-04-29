@@ -13,3 +13,5 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/index', 'PagesController@index');
+
+Route::get('/create', 'IndexController@note_index');

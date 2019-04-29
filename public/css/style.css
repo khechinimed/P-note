@@ -155,7 +155,6 @@
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
-
 	color: #ffffff;
   display: -webkit-box;
   display: -webkit-flex;
@@ -167,4 +166,170 @@
   align-items: center;
   position: relative;
   text-align: center;
+}
+.howTo .container{
+
+}
+.howTo .text{
+  margin: auto 45vh;
+  margin-top: 88px;
+}
+.howTo p{
+  text-align: left;
+  font-size: 28px;
+  font-family: sketch;
+  color: #5d3f41;
+}
+
+@media (max-width: 1200px) {
+  .howTo .text{
+    margin: auto 47vh;
+    margin-top: 88px;
+  }
+
+  .howTo p{
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .howTo .text{
+    margin: auto 29vh;
+    margin-top: 88px;
+  }
+
+  .howTo p{
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 870px) {
+  .howTo .text{
+    margin: auto 30vh;
+    margin-top: 88px;
+  }
+
+  .howTo p{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .howTo .text{
+    margin: auto 25vh;
+    margin-top: 88px;
+    display: table-cell;
+  }
+
+  .howTo p{
+    font-size: 18px;
+  }
+}
+@media (max-width: 725px) {
+  .howTo .text{
+    margin: auto 10vh;
+    margin-top: 80px;
+  }
+
+  .howTo p{
+    font-size: 20px;
+  }
+}
+
+/*---------------------------------------
+    footer section
+-----------------------------------------*/
+footer{
+  padding: 25px 0;
+  text-align: center;
+  background: #e6cd46;
+}
+
+footer span.copyright {
+  line-height: 40px;
+  text-transform: none;
+}
+
+.list-inline>li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.list-inline>li a{
+
+  color: #014441;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+ul.social-buttons li a {
+  display: block;
+  background-color: #014441;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 41px;
+  color: #fff;
+  outline: 0;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+
+footer span.copyright {
+    line-height: 40px;
+    font-size: 20px;
+    color: #014441;
+    font-family: sketch;
+    text-transform: none;
+}
+
+footer .cop{
+  font-family: cursive;
+  font-size: 19px;
+}
+
+/*---------------------------------------
+    Create Note section
+-----------------------------------------*/
+.notes{
+  padding-bottom: 92px;
+  margin-top: 44px;
+}
+.notes h1{
+  font-family: sketch;
+  font-size: 50px;
+  margin-bottom: -20px;
+}
+
+#example-1{
+  border: 1px solid rgb(230, 205, 70);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#formID input, label, textarea{
+  margin-bottom: 10px;
+}
+
+#formID textarea{
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.9rem;
+  font-family: "Lucida Console", Monaco, monospace;
+  height: 160px;
+  margin-bottom: 1em;
+  box-shadow: none;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  background: rgb(255, 250, 206);
+}
+
+#formID input{
+    width: 35%;
 }
