@@ -15,3 +15,6 @@ Route::get('/', 'PagesController@index');
 Route::get('/index', 'PagesController@index');
 
 Route::get('/create', 'IndexController@note_index');
+
+Route::get('/note-link', 'NoteController@linkview');
+Route::post('/note-link', ['as' => 'note-link', 'uses' => 'NoteController@linkview_form']);
