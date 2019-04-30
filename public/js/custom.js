@@ -1,12 +1,12 @@
 /*-------------------------------------------------------------------------------
   Fit Text
 -------------------------------------------------------------------------------*/
-jQuery("#fit1").fitText(0.9, {
+$("#fit1").fitText(0.9, {
   minFontSize: '10px',
   maxFontSize: '68px'
 });
 
-jQuery("#fit2").fitText(0.9, {
+$("#fit2").fitText(0.9, {
   minFontSize: '10px',
   maxFontSize: '68px'
 });
@@ -59,19 +59,38 @@ $('#more').click(function(event) {
   -------------------------------------------------------------------------------*/
 
 
-
-  /* Back top
+  /*-------------------------------------------------------------------------------
+    Select the textArea Text
+  -------------------------------------------------------------------------------*/
+function selectText() {
+    let textarea = document.getElementById("link");
+    textarea.select();
+    document.execCommand("selectText");
+}
+  /* Form Validation using Ajax
   -----------------------------------------------*/
+$(document).ready(function(){
+  $('.submit_note').click(function(){
 
-  $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-        $('.go-top').fadeIn(200);
-        } else {
-          $('.go-top').fadeOut(200);
-        }
-        });
-        // Animate the scroll to top
-      $('.go-top').click(function(event) {
-        event.preventDefault();
-      $('html, body').animate({scrollTop: 0}, 300);
-      })
+    var url = $('form').attr('action');
+    var form_data = $('form').serialize();
+
+    $.ajax({
+      url: url,
+      type: 'post',
+      data : form_data,
+      success: function(successData){
+
+      },
+      error: function(errorData){
+
+      }
+    });
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': '{!! csrf_token() !!}'
+      }
+    });
+  });
+});

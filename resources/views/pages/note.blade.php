@@ -50,18 +50,26 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 			</div>
 			</div>
 
-			<form class="form-horizontal" role="form" method="POST" action="" id="formID" enctype="multipart/form-data">
+			<form class="form-horizontal" role="form" method="POST" action="{{ route('note-link') }}" id="formID" enctype="multipart/form-data">
 
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div>
-
-					<textarea  placeholder="Écrivez votre note ici..." class="form-control validate[required] text-input textarea" name="note_desc"></textarea>
+					@if($errors->any())
+						<div class="alert alert-danger">
+							<ul>
+								@foreach($errors->all() as $error)
+									<li>{{$error}}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					<textarea placeholder="Écrivez votre note ici..." class="form-control text-input textarea" name="note_desc"></textarea>
 
 					<label for="custom password">Entrez un mot de passe pour chiffrer la note.</label>
-					<input type="password" class="validate[required] text-input radiusoff form-control" name="password" id="password"  placeholder="Entrez mot de passe">
+					<input type="password" class="text-input radiusoff form-control" name="password" id="password"  placeholder="Entrez mot de passe">
 
 					<label for="confirm password">Verifiez votre mot de passe</label>
-					<input type="password" class="validate[required,equals[password]] text-input radiusoff form-control" name="cpassword"  placeholder="Confirmez mot de passe">
+					<input type="password" class="text-input radiusoff form-control" name="cpassword"  placeholder="Confirmez mot de passe">
 
 				</div>
 				<div class="clearfix"></div>
@@ -99,7 +107,7 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 
 
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 paddingoff auto_adjust">
-						<button type="submit" class="btn btn-danger btn-lg radiusoff">Submit</button>
+						<button type="submit" class="btn btn-danger btn-lg radiusoff" name="submit_note">Submit</button>
 						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#example-2" aria-expanded="false" aria-controls="multiCollapseExample2">Show / Hide Options</button>
 				</div>
 

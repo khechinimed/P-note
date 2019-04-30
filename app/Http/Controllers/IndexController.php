@@ -12,4 +12,6 @@ class IndexController extends Controller
       return view('pages.note');
 
     }
+
+
 }
