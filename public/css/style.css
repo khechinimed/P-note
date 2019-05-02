@@ -310,7 +310,9 @@ footer .cop{
   padding: 10px;
   margin-bottom: 10px;
 }
-
+#formID{
+  width: 100%;
+}
 #formID input, label, textarea{
   margin-bottom: 10px;
 }
@@ -332,4 +334,10 @@ footer .cop{
 
 #formID input{
     width: 35%;
+}
+/*---------------------------------------
+    Contenue de la note section
+-----------------------------------------*/
+.yello{
+  padding: 26px 0px;
 }

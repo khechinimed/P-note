@@ -19,8 +19,7 @@ class NoteController extends Controller
     public function hide_notes($key)
   	{
   	    $data = array('key' => $key);
-  		return view('pages.message')->with($data);
-
+  		  return view('pages.message')->with('data', $data);
   	}
 
 
@@ -36,16 +35,24 @@ class NoteController extends Controller
 
   	   DB::update('update notes set note_status="expired",note_read_status="read" where note_key = ?', [$key]);
   	   return view('pages.note');
+
+       /*public function destroy_notes($id,$destroy)
+     	{
+     	   DB::delete('delete from notes where id = ?',[$id]);
+     	}*/
   	}
 
 
   	public function notes($key)
   	{
 
-  			$token=csrf_token();
-  			$access="";
-  				$data = array('key' => $key, 'access' => $access, 'token' => $token);
-  				return view('pages.view-message')->with($data);
+      $password = DB::table('notes')->select('password')->where('note_key', '=', $key)->value('password');
+
+  	  $token=csrf_token();
+  		$access="";
+  		$data = array('key' => $key, 'access' => $access, 'token' => $token, 'password' => $password);
+
+      return view('pages.view-message')->with('data', $data);
 
 
   	}
@@ -53,43 +60,38 @@ class NoteController extends Controller
 
   	public function another_notes($key,$access,$token)
   	{
-
-  		$data = array('key' => $key, 'access' => $access, 'token' => $token);
-  				return view('pages.view-message')->with($data);
+      $password = DB::table('notes')->select('password')->where('note_key', '=', $key)->value('password');
+  		$data = array('key' => $key, 'access' => $access, 'token' => $token, 'password' => $password);
+  		return view('pages.view-message')->with('data', $data);
   	}
 
-  	/*public function destroy_notes($id,$destroy)
-  	{
-  	   DB::delete('delete from notes where id = ?',[$id]);
-  	}*/
+
 
 
   	protected function hidden_form(Request $request)
-      {
-  			$data = $request->all();
-  			$password = $data['password'];
-  			$key = $data['key'];
-  			$token = $data['_token'];
-  			$check_pass = DB::table('notes')
-  						   ->where('note_key', '=', $key)
+    {
+  	  $data = $request->all();
+  		$password = $data['password'];
+  		$key = $data['key'];
+  		$token = $data['_token'];
+  		$check_pass = DB::table('notes')
+  		           ->where('note_key', '=', $key)
   						   ->where('password', '=', $password)
   							 ->where('note_status', '=', "available")
   						   ->count();
-  			if($check_pass==1)
-              {
-  				/*$data = array('key' => $key);
-  				return view('view-message')->with($data);*/
+  		if($check_pass==1){
+    		/*$data = array('key' => $key);
+    		return view('view-message')->with($data);*/
+    		$urls = '/view-message/' . $key.'/access/'.$token;
+    		return redirect($urls);
 
-  				$urls = '/view-message/' . $key.'/access/'.$token;
-  				return redirect($urls);
-  			}
-  	        else if($check_pass==0)
-  			{
-  				$urls = '/message/' . $key;
+  		}else if($check_pass==0){
 
-  				return redirect($urls)->with('error', 'Invalid Password Or Notes Destroy');
+  			$urls = '/message/' . $key;
 
-  			}
+  			return redirect($urls)->with('error', 'Invalid Password Or Notes Destroy');
+
+  		}
 
 
   	}
@@ -97,34 +99,24 @@ class NoteController extends Controller
     protected function linkview_form(Request $request){
 
       $validation = $request->validate([
-        'note_desc' => 'required',
-        'password'  => 'required | min:6 | max:10 ',
-        'cpassword' => 'required | same:password',
+         'note_desc' => 'required',
+      //   'password'  => 'required | min:6 | max:10 ',
+      //   'cpassword' => 'required | same:password',
       ]);
-
-      // $inputs = $request->all();
-      // $validation = Validator::make($inputs, $validation);
-      //
-      // if($validation->fails()){
-      //   return Response::json([
-      //     'error' => true,
-      //     'message' => $validation->message(),
-      //     'code' => 400
-      //   ], 400);
-      // }
 
 
   	  $data = $request->all();
   		$note_desc=$data['note_desc'];
+      $password =$data['password'];
   		$note_duration=$data['duration_hours'];
 
-  		$token = uniqid();
+  		$token = md5(uniqid());
 
   		if(!empty($note_duration))
   		{
   			$duration = $note_duration;
 
-  					if($note_duration==0)
+  				if($note_duration==0)
   				{
   					$visible_cnt = 1;
   					$start_date = date("Y-m-d H:i:s");
@@ -211,16 +203,11 @@ class NoteController extends Controller
 
 
 
-
-
-
-
-
   		DB::insert('insert into notes (	note_key, note_desc, note_duration, note_visibile_count, note_start_date, note_end_date, note_read_status, password,
   		email, name, submit_date, note_status) values (?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?)', [$token, $note_desc,$note_duration,$visible_cnt,$start_date,
   		$end_date,$read_status,$password,$email_address,$username,$today_date,$note_status]);
 
-  		$data = array('token' => $token);
+  		$data = array('token' => $token, 'password' => $password);
               return view('pages.note-link')->with($data);
 
   	}

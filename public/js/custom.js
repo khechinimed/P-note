@@ -1,3 +1,6 @@
+/* Form Validation using Ajax
+-----------------------------------------------*/
+
 /*-------------------------------------------------------------------------------
   Fit Text
 -------------------------------------------------------------------------------*/
@@ -67,30 +70,3 @@ function selectText() {
     textarea.select();
     document.execCommand("selectText");
 }
-  /* Form Validation using Ajax
-  -----------------------------------------------*/
-$(document).ready(function(){
-  $('.submit_note').click(function(){
-
-    var url = $('form').attr('action');
-    var form_data = $('form').serialize();
-
-    $.ajax({
-      url: url,
-      type: 'post',
-      data : form_data,
-      success: function(successData){
-
-      },
-      error: function(errorData){
-
-      }
-    });
-
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': '{!! csrf_token() !!}'
-      }
-    });
-  });
-});

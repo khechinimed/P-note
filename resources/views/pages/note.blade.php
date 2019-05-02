@@ -15,15 +15,6 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 <div class="notes">
 	<div class="container">
 		<div class="row">
-
-
-
-
-
-
-
-
-
 			<div class="col-md-12">
 			<div class="all-devices">
 			<div class="text-left"><h1>Nouvelle note</h1></div>
@@ -43,8 +34,6 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 							5. La note se détruira après que le destinataire l'ai lue.<br/><br/>
 
 							En cliquant sur Options, vous pouvez définir une date d'expiration, ou être notifié lorsque la note sera détruite.<br/>
-
-
 					</p>
 				</div>
 			</div>
@@ -63,13 +52,13 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 							</ul>
 						</div>
 					@endif
-					<textarea placeholder="Écrivez votre note ici..." class="form-control text-input textarea" name="note_desc"></textarea>
+					<textarea placeholder="Écrivez votre note ici..." class="form-control text-input textarea" id="note_desc" name="note_desc"></textarea>
 
 					<label for="custom password">Entrez un mot de passe pour chiffrer la note.</label>
 					<input type="password" class="text-input radiusoff form-control" name="password" id="password"  placeholder="Entrez mot de passe">
 
 					<label for="confirm password">Verifiez votre mot de passe</label>
-					<input type="password" class="text-input radiusoff form-control" name="cpassword"  placeholder="Confirmez mot de passe">
+					<input type="password" class="text-input radiusoff form-control" name="cpassword" id="cpassword"  placeholder="Confirmez mot de passe">
 
 				</div>
 				<div class="clearfix"></div>
@@ -107,14 +96,9 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 
 
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 paddingoff auto_adjust">
-						<button type="submit" class="btn btn-danger btn-lg radiusoff" name="submit_note">Submit</button>
+						<button type="submit" class="btn btn-danger btn-lg radiusoff" name="submit_note" id="walou">Submit</button>
 						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#example-2" aria-expanded="false" aria-controls="multiCollapseExample2">Show / Hide Options</button>
 				</div>
-
-				<!--<div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right paddingoff auto_adjust">
-				</div>-->
-
-
 
 			</form>
 			</div>

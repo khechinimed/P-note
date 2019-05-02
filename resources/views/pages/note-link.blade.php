@@ -39,9 +39,9 @@ $url = URL::to("/");
 
 
         <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <button type="button" class="btn btn-default btn-lg radiusoff mbottom" onclick="selectText()">Select Link</button>
-        <a href="mailto:?body=<?php echo $url.'/message/'.$token;?>" class="btn btn-default btn-lg radiusoff mbottom">E-mail Link</a>
-        <a href="<?php echo $url;?>/message/<?php echo $token;?>" class="btn btn-danger btn-lg radiusoff float-right littlebit">Destroy message now</a>
+        <button type="button" class="btn btn-default btn-lg radiusoff mbottom" onclick="selectText()">Selectionner le lien</button>
+        <a href="mailto:?body=<?php echo $url.'/message/'.$token;?>" class="btn btn-default btn-lg radiusoff mbottom">Lien d'email</a>
+        <a href="<?php echo $url;?>/message/<?php echo $token;?>" class="btn btn-danger btn-lg radiusoff float-right littlebit">Détruire la note maintenant</a>
         </div>
 
 
