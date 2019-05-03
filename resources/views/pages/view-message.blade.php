@@ -22,7 +22,7 @@ $password = $data["password"];
 ?>
 
 @extends('layouts.app')
-		@section('content')
+@section('content')
     <div class="notes" style="height: 65vh;">
         <div class="container">
             <div class="row">
@@ -38,7 +38,7 @@ $password = $data["password"];
 
 										$warning_two = DB::table('notes')
 															 ->where('note_key', '=', $key)
-															 ->where('password', '!=', "")
+															 ->where('password', '!=', $password)
 															 ->where('note_status', '=', "available")
 															 ->where('note_end_date', '>', $current_date)
 															 ->count();
@@ -136,16 +136,15 @@ $password = $data["password"];
 																				if($getrec[0]->mail_send==0)
 																				{
 
-																				Mail::send('note_email', $datas , function ($message) use ($admin_email,$username,$email_address)
+																				Mail::send('note_email', $datas , function ($message) use ($admin_email,$username,$email_address){
 
-																						{
 																								$message->subject('Your message is read');
 
 																								$message->from($admin_email, 'Admin');
 
 																								$message->to($email_address);
 
-																						});
+																				});
 
 																				DB::update('update notes set mail_send="1" where note_key = ?', [$key]);
 
@@ -157,58 +156,65 @@ $password = $data["password"];
 
                                         <?php if( isValidMd5($token) ){?>
                                             <div class="col-md-12">
-                                                <textarea class="form-control validate[required] text-input textarea_two" name="note_desc" id="i">
+                                                <textarea class="form-control text-input textarea_two" name="note_desc" id="showMessage" readonly>
                                                     <?php echo $get_view[0]->note_desc;?>
                                                 </textarea>
-                                                <div class="clearfix"></div>
                                                 <div class="col-md-6 paddingoff span_half">
-                                                    <button type="button" class="btn btn-default btn-lg radiusoff" onclick="sel('i')">Selectionner le texte</button>
-
+                                                    <button type="button" class="btn btn-default btn-lg radiusoff" onclick="selectNote()">Selectionner le texte</button>
                                                 </div>
-                                                <?php } else { ?>
 
-                                                    <div class="col-md-12">
-                                                        <h4>Identifiez vous pour voir la note <a href="<?php echo $url;?>/message/<?php echo $key;?>"><?php echo $url;?>/message/<?php echo $key;?></a></h4></div>
-                                                    <div class="clearfix"></div>
-                                                <?php } ?>
+                                        <?php } else { ?>
 
-                                                        <?php if(!empty($warning_two)){?>
-                                                            <?php if($token ==csrf_token()){?>
-                                                                <div class="col-md-6 text-right paddingoff flots span_half">
-                                                                    <a href="<?php echo $url;?>/view-message/<?php echo $key;?>/destroy" class="btn btn-danger btn-lg radiusoff">Détruire la note</a>
-                                                                </div>
-                                                                <?php } } ?>
+																							<textarea class="form-control text-input textarea_two" name="note_desc" id="showMessage" readonly>
+																								<?php echo $get_view[0]->note_desc;?>
+																							</textarea
+
+																							<div class="col-md-6 paddingoff span_half">
+																								<button type="button" class="btn btn-default btn-lg radiusoff" onclick="selectNote()">Selectionner le texte</button>
+																							</div>
+
+                                        <?php } ?>
+
+                                        <?php if(!empty($warning_two)){?>
+                                          <?php if($token ==csrf_token()){?>
+                                            <div class="col-md-6 text-right paddingoff flots span_half">
+                                                <a href="<?php echo $url;?>/view-message/<?php echo $key;?>/destroy" class="btn btn-danger btn-lg radiusoff">Détruire la note</a>
+                                            </div>
+                                        	<?php }
+																				} ?>
+
                                             </div>
 
-                                            <?php
-																									}
+                              <?php
+															}else{
+															?>
+                                <div class="col-md-12">
+                                    <h1>Note détruite</h1>
+                                </div>
 
-																									else
-																									{
-																						?>
-                                                <div class="col-md-12">
-                                                    <h1>Note détruite</h1>
-                                                </div>
+                                <div class="col-md-12" style="padding: 54px 0px;">
+                                    <h4>La note avec l'id <strong><?php echo $key;?></strong>  a étée lue et détruite</h4>
+                                    <h4>Si vous n'avez pas lu cette note, cela signifie que quelqu'un d'autre l'a fait . <br/>Si vous le lisez mais avez oublié de l'écrire, vous devez demander à celui qui l'a envoyé de le renvoyer.</h4>
+                                </div>
+                              <?php
+															}
+															?>
+                              <?php
+																if($get==1){
 
-                                                <div class="col-md-12" style="padding: 54px 0px;">
-                                                    <h4>La note avec l'id <strong><?php echo $key;?></strong>  a étée lue et détruite</h4>
-                                                    <h4>Si vous n'avez pas lu cette note, cela signifie que quelqu'un d'autre l'a fait . <br/>Si vous le lisez mais avez oublié de l'écrire, vous devez demander à celui qui l'a envoyé de le renvoyer.</h4>
-                                                </div>
-                                                <?php
-																										}
-																								?>
-                                              	<?php
-																								if($get==1){
+																		DB::update('update notes set note_status="expired",note_read_status="read" where note_key = ?', [$key]);
+																		/*
+																		DB::delete('delete from notes where note_key = ?',[$key]);
+																		*/
+																}
+																if($check == 1){
 
-																										DB::update('update notes set note_status="expired",note_read_status="read" where note_key = ?', [$key]);
-
-																								}
-																								if($check == 1){
-
-																										DB::update('update notes set note_status="expired",note_read_status="read" where note_key = ?', [$key]);
-
-																								}
-																								?>
+																		DB::update('update notes set note_status="expired",note_read_status="read" where note_key = ?', [$key]);
+																		/*
+																		DB::delete('delete from notes where note_key = ?',[$key]);
+																		*/
+																}
+															?>
 
             </div>
         </div>

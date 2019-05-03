@@ -1,6 +1,3 @@
-/* Form Validation using Ajax
------------------------------------------------*/
-
 /*-------------------------------------------------------------------------------
   Fit Text
 -------------------------------------------------------------------------------*/
@@ -23,6 +20,22 @@ $('#more').click(function(event) {
   }, 1000);
 
   });
+  /*----------------------------------------------
+  Form Validation using Ajax
+  -----------------------------------------------*/
+
+  var password = document.getElementById("password"),
+  confirm_password = document.getElementById("cpassword");
+
+  function validatePassword(){
+    if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Les mots de passe ne correspondent pas.");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
 /*-------------------------------------------------------------------------------
   Typed js
 -------------------------------------------------------------------------------*/
@@ -45,22 +58,6 @@ $('#more').click(function(event) {
   $(window).load(function(){
     $('.preloader').fadeOut(1000); // set duration in brackets
   });
-
-
-  /*-------------------------------------------------------------------------------
-    jQuery Parallax
-  -------------------------------------------------------------------------------*/
-
-    function initParallax() {
-    $('#home').parallax("50%", 0.3);
-
-  }
-  initParallax();
-
-  /*-------------------------------------------------------------------------------
-    Hide/Show Instructions
-  -------------------------------------------------------------------------------*/
-
 
   /*-------------------------------------------------------------------------------
     Select the textArea Text

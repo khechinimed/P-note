@@ -310,6 +310,9 @@ footer .cop{
   padding: 10px;
   margin-bottom: 10px;
 }
+#example-1 p{
+  margin: 2px;
+}
 #formID{
   width: 100%;
 }
@@ -335,9 +338,30 @@ footer .cop{
 #formID input{
     width: 35%;
 }
+
 /*---------------------------------------
     Contenue de la note section
 -----------------------------------------*/
 .yello{
   padding: 26px 0px;
+}
+#showMessage{
+  width: 100%;
+  max-width: 100%;
+  font-size: 0.9rem;
+  font-family: "Lucida Console", Monaco, monospace;
+  height: 160px;
+  margin-bottom: 1em;
+  box-shadow: none;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  background: rgb(255, 250, 206);
+}
+/*---------------------------------------
+    Asking for password section
+-----------------------------------------*/
+#psw{
+  margin: 50px auto;
 }

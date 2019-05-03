@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 	 <link rel="icon" href="{{asset('img/icon.png')}}">
 
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   <link rel="stylesheet" href="{{asset('css/validationEngine.jquery.css')}}">
    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 

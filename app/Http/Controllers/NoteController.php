@@ -30,17 +30,18 @@ class NoteController extends Controller
   	}
 
 
-  	public function destroy_notes($key,$destroy)
+  	/*public function destroy_notes($key,$destroy)
   	{
 
   	   DB::update('update notes set note_status="expired",note_read_status="read" where note_key = ?', [$key]);
   	   return view('pages.note');
 
-       /*public function destroy_notes($id,$destroy)
-     	{
-     	   DB::delete('delete from notes where id = ?',[$id]);
-     	}*/
-  	}
+  	}*/
+    public function destroy_notes($id,$destroy)
+    {
+      DB::delete('delete from notes where id = ?',[$id]);
+      return view('pages.note');
+    }
 
 
   	public function notes($key)
@@ -62,6 +63,7 @@ class NoteController extends Controller
   	{
       $password = DB::table('notes')->select('password')->where('note_key', '=', $key)->value('password');
   		$data = array('key' => $key, 'access' => $access, 'token' => $token, 'password' => $password);
+
   		return view('pages.view-message')->with('data', $data);
   	}
 
@@ -98,11 +100,11 @@ class NoteController extends Controller
 
     protected function linkview_form(Request $request){
 
-      $validation = $request->validate([
-         'note_desc' => 'required',
+      //$validation = $request->validate([
+      //   'note_desc' => 'required',
       //   'password'  => 'required | min:6 | max:10 ',
       //   'cpassword' => 'required | same:password',
-      ]);
+      //]);
 
 
   	  $data = $request->all();

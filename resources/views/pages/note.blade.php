@@ -52,13 +52,13 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 							</ul>
 						</div>
 					@endif
-					<textarea placeholder="Écrivez votre note ici..." class="form-control text-input textarea" id="note_desc" name="note_desc"></textarea>
+					<textarea placeholder="Écrivez votre note ici..." class="form-control text-input textarea" id="note_desc" name="note_desc" required></textarea>
 
 					<label for="custom password">Entrez un mot de passe pour chiffrer la note.</label>
-					<input type="password" class="text-input radiusoff form-control" name="password" id="password"  placeholder="Entrez mot de passe">
+					<input type="password" class="text-input radiusoff form-control" name="password" id="password"  placeholder="Entrez mot de passe" required>
 
 					<label for="confirm password">Verifiez votre mot de passe</label>
-					<input type="password" class="text-input radiusoff form-control" name="cpassword" id="cpassword"  placeholder="Confirmez mot de passe">
+					<input type="password" class="text-input radiusoff form-control" name="cpassword" id="cpassword"  placeholder="Confirmez mot de passe" required>
 
 				</div>
 				<div class="clearfix"></div>

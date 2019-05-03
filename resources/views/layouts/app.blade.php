@@ -28,8 +28,6 @@
   <script src="js/jquery.fittext.js"></script>
   <script src="js/typed.js"></script>
   <script src="js/particles.min.js"></script>
-  <script src="js/jquery.parallax.js"></script>
-  <script src="js/smoothscroll.js"></script>
   <script src="js/main.js"></script>
   <script src="js/custom.js"></script>
 

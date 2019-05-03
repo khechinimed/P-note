@@ -22,6 +22,23 @@ $password = DB::table('notes')->select('password')->where('note_key', '=', $key)
         <?php
 					 if(!empty($password)){
 				?>
+							<div class="col-md-12">
+								<h1>Contenu de la note</h1>
+							</div>
+
+							<div class="all-devices">
+			        <div class="text-right">
+			          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#example-1" aria-expanded="false" aria-controls="multiCollapseExample2">
+			  					<i class="fa fa-question moverss" aria-hidden="true"></i>
+			  				</button>
+			        </div>
+			         <div id="example-1" class="panel panel-primary collapse">
+			          <div class="panel-body">
+			            <p>La note que vous essayez de lire a été chiffrée avec un mot de passe manuel. Si vous ne l'avez pas, demandé à celui qui a rédigé la note.</p>
+			          </div>
+			        </div>
+			        </div>
+
           		<div class="row">
               	<div class="col-md-12">
                   @if(session()->has('error'))
@@ -32,9 +49,9 @@ $password = DB::table('notes')->select('password')->where('note_key', '=', $key)
                 </div>
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('message') }}" id="formID" enctype="multipart/form-data">
                   <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                	<div class="form-group col-xs-11 col-sm-6 col-md-6 col-lg-6">
+                	<div class="form-group col-xs-11 col-sm-6 col-md-6 col-lg-6" id="psw">
                     <label for="password">Entrez le mot de passe pour lire la note</label>
-                    <input type="password" class="form-control text-input radiusoff" name="password" placeholder="Entrer le mot de passe">
+                    <input type="password" class="form-control text-input radiusoff" name="password" placeholder="Entrer le mot de passe" style="width: 75%;">
                     <input type="hidden" name="key" value="<?php echo $key;?>">
 
                     <button type="submit" class="btn btn-danger btn-lg radiusoff">Proceed</button>
