@@ -313,9 +313,13 @@ footer .cop{
 #example-1 p{
   margin: 2px;
 }
+#save_note{
+  padding: 0px;
+}
 #formID{
   width: 100%;
 }
+
 #formID input, label, textarea{
   margin-bottom: 10px;
 }

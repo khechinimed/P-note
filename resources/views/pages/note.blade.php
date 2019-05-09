@@ -87,17 +87,15 @@ $setts = DB::table('settings')->where('id', '=', $setid)->get();
 									<label for="reference name">Nom de la référence de la note (optionnel)</label>
 									<input type="text" class="form-control radiusoff" name="name" placeholder="Nom">
 							</div>
-
-					<div class="clearfix"></div>
 					</div>
 				</div>
 
 				</div>
 
 
-				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 paddingoff auto_adjust">
-						<button type="submit" class="btn btn-danger btn-lg radiusoff" name="submit_note" id="walou">Submit</button>
-						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#example-2" aria-expanded="false" aria-controls="multiCollapseExample2">Show / Hide Options</button>
+				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 auto_adjust" id="save_note">
+						<button type="submit" class="btn btn-danger btn-lg radiusoff" name="submit_note" id="walou">Enregistrer la note</button>
+						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#example-2" aria-expanded="false" aria-controls="multiCollapseExample2">Montrer / Masquer Options</button>
 				</div>
 
 			</form>

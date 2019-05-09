@@ -54,11 +54,6 @@ Route::group(['middleware' => 'admin'], function() {
 	/* end user */
 
 
-
-
-
-
-
 	/* pages */
 
 	Route::get('/admin/pages','Admin\PagesController@index');
@@ -82,6 +77,12 @@ Route::group(['middleware' => 'admin'], function() {
 	Route::post('/admin/settings', ['as'=>'admin.settings','uses'=>'Admin\SettingsController@editsettings']);
 
 	/* end settings */
+
+
+});
+Route::group(['middleware' => 'web'], function (){
+
+    Route::get('/dashboard', 'DashboardController@index');
 
 
 });

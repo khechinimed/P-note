@@ -54,7 +54,7 @@ $password = DB::table('notes')->select('password')->where('note_key', '=', $key)
                     <input type="password" class="form-control text-input radiusoff" name="password" placeholder="Entrer le mot de passe" style="width: 75%;">
                     <input type="hidden" name="key" value="<?php echo $key;?>">
 
-                    <button type="submit" class="btn btn-danger btn-lg radiusoff">Proceed</button>
+                    <button type="submit" class="btn btn-danger btn-lg radiusoff">Montrer la note</button>
                   </div>
                 </form>
 

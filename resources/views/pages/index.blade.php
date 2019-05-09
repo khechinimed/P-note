@@ -64,5 +64,6 @@
         </div>
       </div>
     </section>
-
+    <input type="text" id="password" name="password" style="display:none;">
+    <input type="text" id="cpassword" name="password" style="display:none;">
 @endsection
